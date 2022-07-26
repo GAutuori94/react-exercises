@@ -1,10 +1,13 @@
 import React from "react";
-import { Hello } from "./hello";
+import { Hello, Message } from "./hello";
 
 export default class App extends React.Component {
     render () {
         return (
-        <div> <Hello /> </div>
+        <div> 
+            <Hello />
+            <Message />
+             </div>
         )
     }
 }
