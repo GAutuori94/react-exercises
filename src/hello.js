@@ -3,7 +3,7 @@ import React from "react";
 export class Hello extends React.Component {
   render() {
     return ( <div>
-            <h1>Hello World</h1>;
+            <h1>Hello World</h1>
            <Message />
       </div>
     )
@@ -12,7 +12,7 @@ export class Hello extends React.Component {
 
 export class Message extends React.Component {
   render() {
-    return <p> What a beautiful day!</p>;
+    return <p> What a beautiful day!</p>
   }
 }
 
@@ -21,7 +21,7 @@ export class Welcome extends React.Component {
     return (
       <div>
         <p> Welcome {this.props.name} </p>
-        <Age age={this.props.age}/>
+        {this.props.age > 18 && <Age age={this.props.age}/>}
       </div>
     );
   }
