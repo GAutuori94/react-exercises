@@ -2,7 +2,7 @@ import React from "react";
 import { ClickCounter } from "./clickCounter";
 import { ClickTracker } from "./clickTracker";
 import { Counter } from "./counter";
-import { InteractiveWelcome } from "./forms";
+import { InteractiveWelcome, Login } from "./forms";
 import { Hello, Welcome } from "./hello";
 
 export default class App extends React.Component {
@@ -17,6 +17,7 @@ export default class App extends React.Component {
             <br></br>
             <br></br>
             <InteractiveWelcome />
+            <Login />
              </div>
         )
     }
