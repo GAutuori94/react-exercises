@@ -48,18 +48,30 @@ export class Login extends React.Component {
         this.setState ({
             [name]: type === "checkbox" ? checked : value
         })
+    }
 
-
+    onLogin = () => {
+        this.setState({
+            username: this.state.username,
+            password: this.state.password
+        })
     }
 
     render () {
         return (
             <div>
-                <h2> Login Form </h2>
-                <input name="username" value={this.state.username} onChange={this.handleFormInputs} />
-                <input name="password" type="password" value={this.state.password} onChange={this.handleFormInputs} />
-                <input name="remember" type="checkbox" checked={this.state.remember} onChange={this.handleFormInputs} />
+                <div>
+                    <h2> Login Form </h2>
+                    <input name="username" value={this.state.username} onChange={this.handleFormInputs} />
+                    <input name="password" type="password" value={this.state.password} onChange={this.handleFormInputs} />
+                    <input name="remember" type="checkbox" checked={this.state.remember} onChange={this.handleFormInputs} />
+                </div>
+
+                <div>
+                    <button type="submit" onClick={this.onLogin} disabled={!(this.state.username && this.state.password)}> Login </button>
+                </div>
             </div>
+            
         )
     }
 }
