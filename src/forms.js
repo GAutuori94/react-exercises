@@ -103,13 +103,17 @@ export class UncontrolledLogin extends React.Component {
         })
     }
 
+    componentDidMount () {
+        this.username.focus()
+    }
+
     render () {
         return (
             <div>
                 <h2> Uncontrolled Login Form</h2>
 
                 <form onSubmit={this.handleFormSubmit}>
-                    <input name="username"/>
+                    <input name="username" ref={(element) => {this.username = element}}/>
                     <input name="password" type="password"/>
                     <input name="remember" type="checkbox" />
 
