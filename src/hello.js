@@ -18,8 +18,14 @@ export class Message extends React.Component {
 
 export class Welcome extends React.Component {
   render() {
+
+    const WelcomeStyle = {
+      backgroundColor: "beige",
+      border: "1px solid green"
+    }
+
     return (
-      <div>
+      <div style={WelcomeStyle}>
         <p> Welcome {this.props.name} </p>
         {<Age age={this.props.age}/>}
       </div>
