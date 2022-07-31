@@ -17,7 +17,8 @@ export class TodoList extends React.Component {
 
     handlerAddNewItem = () => {
         this.setState({
-            items: [...this.state.items, this.state.newItem]
+            items: [...this.state.items, this.state.newItem],
+            newItem: ""
         })
     }
 
@@ -32,7 +33,7 @@ export class TodoList extends React.Component {
                 </ul>
             </div>
             <div>
-                <input type="text" name="item" value={this.state.newItem} onChange={this.handleInputRead} />
+                <input type="text" name="item" value={this.state.newItem} onChange={this.handleInputRead}/>
                 <button type="submit" onClick={this.handlerAddNewItem}>Add</button>
             </div>
             </div>
