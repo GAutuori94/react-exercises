@@ -10,7 +10,7 @@ import { TodoList } from "./lists";
 export default class App extends React.Component {
     render () {
         return (
-        <Container> 
+        <Container title="My Awesome Application"> 
             <Hello />
             <Welcome name={<strong>Giorgio</strong>} age={28} />
             <Counter initialValue={0} incrementAmount={1} incrementInterval={1000} />
