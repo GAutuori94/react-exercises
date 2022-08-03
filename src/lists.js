@@ -28,16 +28,16 @@ export class TodoList extends React.Component {
         })
     }
 
-        handleRemoveItem = (index) => {
+    handleRemoveItem = (removedItem) => {
 
-            const removebleElements = [...this.state.items]
-    
-            removebleElements.splice(index, 1)
-    
-            this.setState({
-                items: removebleElements
-            })
-        }
+        const filteredArray = this.state.items.filter(
+            (item) => item !== removedItem
+          );
+      
+          this.setState({
+            items: [...filteredArray],
+          });
+        };
 
     render () {
 
