@@ -25,7 +25,21 @@ export default class App extends React.Component {
             <UncontrolledLogin />
             <br></br>
             <br></br>
-            <TodoList />
+            <TodoList 
+            
+                render={
+                    (items, handleRemoveItem) => {
+
+                    return (
+                        items.map((item, index) => <li key={item + index}>{item} 
+                        <button onClick={() => handleRemoveItem(item)}>Remove</button>
+                        </li>)
+                    )
+                }
+                }
+            >
+
+            </TodoList>
              </Container>
         )
     }

@@ -28,16 +28,16 @@ export class TodoList extends React.Component {
         })
     }
 
-        handleRemoveItem = (index) => {
+        handleRemoveItem = (removedItem) => {
 
-            const removebleElements = [...this.state.items]
-    
-            removebleElements.splice(index, 1)
-    
-            this.setState({
-                items: removebleElements
-            })
-        }
+            const filteredArray = this.state.items.filter(
+                (item) => item !== removedItem
+              );
+          
+              this.setState({
+                items: [...filteredArray],
+              });
+            };
 
     render () {
 
@@ -46,9 +46,7 @@ export class TodoList extends React.Component {
                 <h2>My List</h2>
             <div>
                 <ul>
-                {this.state.items.map((item, index) => <li key={item + index}>{item} 
-                <button onClick={this.handleRemoveItem}>Remove</button>
-                </li>)}
+                {this.props.render(this.state.items, this.handleRemoveItem)}
                 
                 </ul>
             </div>
