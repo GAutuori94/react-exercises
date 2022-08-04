@@ -1,46 +1,29 @@
 import React from "react";
-import { ClickCounter } from "./clickCounter";
-import { ClickTracker } from "./clickTracker";
-import { Container } from "./composition";
-import { Counter } from "./counter";
-import { InteractiveWelcome, Login, UncontrolledLogin } from "./forms";
-import { Hello, Welcome } from "./hello";
-import { TodoList } from "./lists";
+import { DisplayLanguage } from "./displayLanguage";
+import { LanguageContext } from "./languageContext";
 
 export default class App extends React.Component {
-    render () {
-        return (
-        <Container title="My Awesome Application"> 
-            <Hello />
-            <Welcome name={<strong>Giorgio</strong>} age={28} />
-            <Counter initialValue={0} incrementAmount={1} incrementInterval={1000} />
-            <ClickCounter />
-            <ClickTracker />
-            <br></br>
-            <br></br>
-            <InteractiveWelcome />
-            <Login />
-            <br></br>
-            <br></br>
-            <UncontrolledLogin />
-            <br></br>
-            <br></br>
-            <TodoList 
-            
-                render={
-                    (items, handleRemoveItem) => {
+  state = {
+    language: "en",
+  };
 
-                    return (
-                        items.map((item, index) => <li key={item + index}>{item} 
-                        <button onClick={() => handleRemoveItem(item)}>Remove</button>
-                        </li>)
-                    )
-                }
-                }
-            >
-
-            </TodoList>
-             </Container>
-        )
-    }
+  handleLanguageChange = (event) => {
+    this.setState({
+      language: event.target.value,
+    });
+  };
+  render() {
+    return (
+        <LanguageContext.Provider value={this.state.language}>
+          <select
+            value={this.state.language}
+            onChange={this.handleLanguageChange}
+          >
+            <option value="en">English</option>
+            <option value="it">Italiano</option>
+          </select>
+          <DisplayLanguage />
+        </LanguageContext.Provider>  
+    );
+  }
 }
