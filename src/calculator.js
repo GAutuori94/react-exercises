@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Sum ({numbers}) {
+export function Sum ({numbers=[2, 4, 6, 8, 10]}) {
     return (
         <div>
             <h2>The numbers are: {numbers.join(", ")}</h2>
