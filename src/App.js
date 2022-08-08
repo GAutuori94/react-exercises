@@ -1,11 +1,11 @@
 import React from "react";
-import { GithubUser } from "./apifetcher";
+import { GithubUser, GithubUserList } from "./apifetcher";
 
 export default class App extends React.Component {
  
   render() {
     return (
-        <GithubUser username="GAutuori94" />
+        <GithubUserList />
     )
   }
 }

@@ -45,3 +45,27 @@ export function GithubUser ({username}) {
     </div>
     )
 }
+
+
+export function GithubUserList () {
+
+    const [usernamesArray, setUsernamesArray] = useState([])
+    const [input, setInput] = useState('')
+
+    function handleInputChange (event) {
+        setInput(event.target.value)
+    }
+
+    function handleElementSubmit (event) {
+        setUsernamesArray([...usernamesArray, input])
+    }
+
+
+    return <div>
+        <ul>
+            {usernamesArray.map((githubElement, index) => <li key={githubElement + index}> <GithubUser username={githubElement}/> </li>)}
+        </ul>
+        <input name="username" onChange={handleInputChange}/>
+        <button type="submit" onClick={handleElementSubmit} >Add GitHub Username</button>
+    </div>
+}
