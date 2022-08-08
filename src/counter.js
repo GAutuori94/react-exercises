@@ -8,9 +8,7 @@ export function Counter ({initialValue = 0, incrementAmount = 1, incrementInterv
     useEffect(() => {
         console.log('I have mounted')
         const interval = setInterval(() => {
-            setCounter((counter) => {
-                return counter + incrementAmount
-            })
+            setCounter((counter) => counter + incrementAmount)
         }, incrementInterval)
 
         return () => {
