@@ -1,11 +1,11 @@
 import React from "react";
-import { Login } from "./forms";
+import { ClickCounter } from "./counter";
 
 export default class App extends React.Component {
  
   render() {
     return (
-        <Login />
-    );
+        <ClickCounter />
+    )
   }
 }
