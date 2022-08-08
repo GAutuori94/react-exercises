@@ -1,11 +1,11 @@
 import React from "react";
-import { Counter } from "./counter";
+import { GithubUser } from "./apifetcher";
 
 export default class App extends React.Component {
  
   render() {
     return (
-        <Counter />
+        <GithubUser username="GAutuori94" />
     )
   }
 }
