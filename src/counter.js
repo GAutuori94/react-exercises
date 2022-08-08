@@ -1,31 +1,27 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export function ClickCounter ({initialValue = 0}) {
+export function Counter ({initialValue = 0, incrementAmount = 1, incrementInterval = 1000}) {
 
     const [counter, setCounter] = useState (initialValue)
 
     useEffect(() => {
-        onCounterChange(counter)
+        console.log('I have mounted')
+        const interval = setInterval(() => {
+            setCounter((counter) => {
+                return counter + incrementAmount
+            })
+        }, incrementInterval)
+
+        return () => {
+            clearInterval(interval)
+            console.log('I have unmounted')
+        }
     }, [counter])
-
-    function handleCounterIncrement() {
-        setCounter(counter => counter + 1)
-    }
-
-    function handleCounterReset () {
-        setCounter(initialValue)
-    }
-
-    function onCounterChange (value) {
-        console.log(value)
-    }
 
     return (
         <div>
             <h2>Counter: {counter} </h2>
-            <button onClick={handleCounterIncrement}> Increment </button>
-            <button onClick={handleCounterReset}> Reset </button>
         </div>
     )
 }
