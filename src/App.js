@@ -1,11 +1,11 @@
 import React from "react";
-import { Counter } from "./counter";
+import { LoginForm } from "./forms";
 
 export default class App extends React.Component {
  
   render() {
     return (
-        <Counter />
+        <LoginForm />
     )
   }
 }
