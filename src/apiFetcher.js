@@ -4,7 +4,11 @@ import { useGithubUser } from './useGithubUser'
 
 export function GithubUser ({username}) {
 
-    const { data, loading, error } = useGithubUser(username)
+    const { data, loading, error, onFetchUser } = useGithubUser(username)
+
+    function handleGetUserData() {
+        onFetchUser(username)
+    }
 
     const userStyle = {
         width: "15%",
@@ -21,6 +25,7 @@ export function GithubUser ({username}) {
     }
 
     return (<div>
+        <button onClick={handleGetUserData} > Load user data </button>
         {loading && <h1>Loading ...</h1>}
         {error && <h1>There has been an error</h1>}
         {data && <div style={userStyle}>

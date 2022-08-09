@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export function useGithubUser(username) {
+export function useGithubUser() {
     
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -14,6 +14,10 @@ export function useGithubUser(username) {
             const response = await fetch(`https://api.github.com/users/${username}`)
             const json = await response.json()
 
+            if(response.status !== 200) {
+                setError (new Error("The user doesn't exist"))
+            }
+
             setData(json)
         } catch (error) {
             setError(error)
@@ -23,10 +27,5 @@ export function useGithubUser(username) {
         }
     }
 
-
-    useEffect(() => {
-        fetchGithubUser(username)
-    }, [username])
-
-    return { data, error, loading }
+    return { data, error, loading, onFetchUser: fetchGithubUser }
 }
