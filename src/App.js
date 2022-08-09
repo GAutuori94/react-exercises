@@ -1,11 +1,11 @@
 import React from "react";
-import { LoginForm } from "./forms";
+import { GithubUser } from "./apiFetcher";
 
 export default class App extends React.Component {
  
   render() {
     return (
-        <LoginForm />
+        <GithubUser username='GAutuori94' />
     )
   }
 }
