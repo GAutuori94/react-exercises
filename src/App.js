@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import { GithubUser } from "./apiFetcher";
+import { Counter } from "./counter.js";
 
 export function App() {
-    
-    const [username, setUsername] = useState('')
 
   return (
     <div>
-      <input value={username} onChange={(e) => setUsername(e.target.value)} />
-      <GithubUser username={username} />
+      <Counter intialValue={0}/>
     </div>
   )
 }
