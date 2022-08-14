@@ -1,5 +1,5 @@
 import { React } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Link } from 'react-router-dom'
 import { ClickCounter } from './counter'
 import { ShowGithubUser } from './githubSearch.js'
 import { Welcome } from './hello'
@@ -13,6 +13,9 @@ export function App() {
         <Route path='/counter' element={<ClickCounter />} />
         <Route path='/users/:username' element={<ShowGithubUser />} />
       </Routes>
+
+      <Link to="/">Home</Link> | <Link to="/counter">Counter</Link> | <Link to="/user/:username">Github User</Link>
+
     </div>
   )
 }
