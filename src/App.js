@@ -1,5 +1,6 @@
 import { Routes } from 'react-router-dom'
 import { Route } from 'react-router-dom'
+import { ClickCounter } from './counter'
 import { Welcome } from './hello'
 
 export function App() {
@@ -8,6 +9,7 @@ export function App() {
     <div>
       <Routes>
         <Route path='/' element={<Welcome name='Giorgio' />} />
+        <Route path='/counter' element={<ClickCounter />} />
       </Routes>
     </div>
   )
