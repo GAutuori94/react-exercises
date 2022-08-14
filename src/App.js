@@ -1,5 +1,6 @@
 import { React } from 'react'
 import { Route, Routes, Link } from 'react-router-dom'
+import { GithubUserList } from './apiFetcher'
 import { ClickCounter } from './counter'
 import { ShowGithubUser } from './githubSearch.js'
 import { Welcome } from './hello'
@@ -11,14 +12,16 @@ export function App() {
       <Routes>
         <Route path='/' element={<Welcome name='Giorgio' />} />
         <Route path='/counter' element={<ClickCounter />} />
-        <Route path='/users/:username' element={<ShowGithubUser />} />
+        <Route path='/users' element={<GithubUserList />}>
+          <Route path=':username' element={<ShowGithubUser />} />
+        </Route>
         <Route path='*' element={<div>
           <h2>Page not found</h2>
           <Link to='/'>Return to Home</Link>
         </div>} />
       </Routes>
 
-      <Link to="/">Home</Link> | <Link to="/counter">Counter</Link> | <Link to="/user/:username">Github User</Link>
+      <Link to="/">Home</Link> | <Link to="/counter">Counter</Link> | <Link to="/users">Github User</Link>
 
     </div>
   )
