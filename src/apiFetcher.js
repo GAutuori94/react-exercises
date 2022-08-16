@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom"
 
 export function GithubUser ({username}) {
 
-    const { user, error, isLoading } = useGithubUser(username)
+    const { user, error, isLoading, onRefresh } = useGithubUser(username)
 
     const userStyle = {
         width: "15%",
@@ -29,6 +29,7 @@ export function GithubUser ({username}) {
         <p>{user.location}</p>
         <p>Public repos: {user.public_repos}</p>
         </div>}
+        <button onClick={onRefresh}>Refresh</button>
     </div>
     )
 }
