@@ -1,26 +1,10 @@
-import { useEffect, useState } from "react"
-import { Link, Outlet } from 'react-router-dom'
-
+import { useGithubUser } from './useGithubUser'
+import { useState } from "react"
+import { Link, Outlet } from "react-router-dom"
 
 export function GithubUser ({username}) {
 
-    const [data, setData] = useState(null)
-    const [loading, setLoading] = useState(false)
-
-    useEffect(() => {
-        setLoading(true)
-        fetch(`https://api.github.com/users/${username}`)
-        .then(response => {
-            return response.json()
-        })
-        .then (json => {
-            console.log(json)
-
-            setLoading(false)
-            setData(json)
-        })
-    }, [username])
-
+    const { user, error, isLoading } = useGithubUser(username)
 
     const userStyle = {
         width: "15%",
@@ -37,18 +21,17 @@ export function GithubUser ({username}) {
     }
 
     return (<div>
-        {loading && <h1>Loading ...</h1>}
-        {data && <div style={userStyle}>
-        <img src={data.avatar_url} style={imgStyle}/>
-        <h1>{data.name || data.login}</h1>
-        <p>{data.location}</p>
-        <p>Public repos: {data.public_repos}</p>
+        {isLoading && <h1>Loading ...</h1>}
+        {error && <h1>There has been an error</h1>}
+        {user && <div style={userStyle}>
+        <img src={user.avatar_url} style={imgStyle}/>
+        <h1>{user.name}</h1>
+        <p>{user.location}</p>
+        <p>Public repos: {user.public_repos}</p>
         </div>}
     </div>
     )
 }
-
-
 
 
 export function GithubUserList () {
